@@ -1,0 +1,104 @@
+<?php
+$servername = "localhost";
+$username = "root";  // Change if necessary
+$password = "";  // Change if necessary
+$dbname = "school_management";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch Teachers
+$teachers = $conn->query("SELECT * FROM teachers");
+
+// Fetch Students
+$students = $conn->query("SELECT * FROM students");
+
+// Fetch Classes
+$classes = $conn->query("SELECT * FROM classes");
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Database</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Teachers</h2>
+<table>
+    <tr>
+        <th>Teacher</th>
+        <th>Teacher ID</th>
+        <th>Handled Subject</th>
+    </tr>
+    <?php while($row = $teachers->fetch_assoc()): ?>
+    <tr>
+        <td><?= $row['name']; ?></td>
+        <td><?= $row['teacher_id']; ?></td>
+        <td><?= $row['handled_subject']; ?></td>
+    </tr>
+    <?php endwhile; ?>
+</table>
+
+<h2>Students</h2>
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Student ID</th>
+        <th>Handled Subject</th>
+    </tr>
+    <?php while($row = $students->fetch_assoc()): ?>
+    <tr>
+        <td><?= $row['name']; ?></td>
+        <td><?= $row['student_id']; ?></td>
+        <td><?= $row['handled_subject']; ?></td>
+    </tr>
+    <?php endwhile; ?>
+</table>
+
+<h2>Classes</h2>
+<table>
+    <tr>
+        <th>Class</th>
+        <th>Class ID</th>
+        <th>Class Subjects</th>
+    </tr>
+    <?php while($row = $classes->fetch_assoc()): ?>
+    <tr>
+        <td><?= $row['class_name']; ?></td>
+        <td><?= $row['class_id']; ?></td>
+        <td><?= $row['class_subjects']; ?></td>
+    </tr>
+    <?php endwhile; ?>
+</table>
+
+</body>
+</html>
+
+<?php
+$conn->close();
+?>
