@@ -1,0 +1,41 @@
+CREATE DATABASE library_management;
+USE library_management;
+
+-- Librarians Table
+CREATE TABLE librarians (
+    librarian_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    assigned_section VARCHAR(100)
+);
+
+-- Books Table
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    author VARCHAR(50),
+    genre VARCHAR(50)
+);
+
+-- Members Table
+CREATE TABLE members (
+    member_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    membership_type VARCHAR(50)
+);
+
+-- Insert Sample Data
+INSERT INTO librarians (librarian_id, name, assigned_section) VALUES
+(101, 'Alice Johnson', 'Fiction'),
+(102, 'Bob Smith', 'Reference'),
+(103, 'Charlie Davis', 'Children’s Books');
+
+INSERT INTO books (book_id, title, author, genre) VALUES
+(201, 'To Kill a Mockingbird', 'Harper Lee', 'Fiction'),
+(202, '1984', 'George Orwell', 'Dystopian'),
+(203, 'The Great Gatsby', 'F. Scott Fitzgerald', 'Classic');
+
+INSERT INTO members (member_id, name, membership_type) VALUES
+(301, 'David Wilson', 'Gold'),
+(302, 'Emma Brown', 'Silver'),
+(303, 'Frank Miller', 'Bronze');
+\
