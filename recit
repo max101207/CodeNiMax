@@ -1,0 +1,31 @@
+-- 1. Create the database
+CREATE DATABASE company;
+
+-- 2. Use the created database
+USE company;
+
+-- 3. Create the table
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    hire_date DATE
+);
+
+-- 4. Insert data into the table
+INSERT INTO employees (employee_id, first_name, last_name, email, hire_date)
+VALUES (1, 'John', 'Doe', 'johndoe@example.com', '2023-01-15'),
+       (2, 'Jane', 'Smith', 'janesmith@example.com', '2023-02-20');
+
+-- 5. Update data in the table
+UPDATE employees
+SET email = 'john.doe@company.com'
+WHERE employee_id = 1;
+
+-- 6. Drop a column from the table
+ALTER TABLE employees
+DROP COLUMN email;
+
+-- 7. Drop the entire table
+DROP TABLE employees;
